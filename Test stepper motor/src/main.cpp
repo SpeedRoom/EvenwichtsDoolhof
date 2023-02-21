@@ -1,3 +1,4 @@
+/*
 #include <Arduino.h>
 
 // Define pin connections & motor's steps per revolution
@@ -21,7 +22,68 @@ void loop()
     delay(100);
 	}
     Serial.println(digitalRead(4));
+}*/
+
+
+
+#include <AccelStepper.h>
+
+
+
+// Motor Connections (constant current, step/direction bipolar motor driver)
+const int dirPiny = 18;
+const int stepPiny = 19;
+const int dirPinx = 33;
+const int stepPinx = 32;
+const int switchy = 4;
+const int switchx = 14;
+const int poty = 2;
+const int potx = 12;
+int posy = 0;
+int value_poty = 0;
+const int max_rot = 255; 
+
+
+
+AccelStepper mySteppery(AccelStepper::DRIVER, stepPiny, dirPiny);   // works for a4988 (Bipolar, constant current, step/direction driver)
+AccelStepper myStepperx(AccelStepper::DRIVER, stepPinx, dirPinx);
+
+void setup() {
+  Serial.begin(9600);
+  // set the maximum speed and initial speed. The initial speed will be the only
+  // speed used. No acceleration will happen - only runSpeed is used. Runs forever.
+  pinMode(switchy,INPUT_PULLDOWN);
+  pinMode(switchx,INPUT_PULLDOWN);
+  pinMode(poty,INPUT);
+  pinMode(potx,INPUT);
+  mySteppery.setMaxSpeed(1000.0);    // must be equal to or greater than desired speed.
+  mySteppery.setSpeed(500.0);       // desired speed to run at
+  mySteppery.setAcceleration(200);
+  Serial.println("in setup");
+  while(!digitalRead(switchy)){
+	Serial.println(digitalRead(switchy));
+	mySteppery.move(10);
+  }
+  Serial.println("na de while");
+  posy = 0;
 }
+
+void loop() {
+	//mysteppery.stop()
+	if (!mySteppery.run()){
+		
+		value_poty = analogRead(poty);
+		delay(50);
+		mySteppery.moveTo(value_poty/10);
+	}
+
+	//if (!mySteppery.run()){
+	//	mySteppery.moveTo(-mySteppery.currentPosition());
+	//}
+  	
+  	
+}
+
 
 /*
 #include <Arduino.h>
@@ -30,6 +92,7 @@ void loop()
 const int dirPin = 18;
 const int stepPin = 19;
 const int stepsPerRevolution = 3200;
+
 
 void setup()
 {
@@ -64,4 +127,5 @@ void loop()
 		delayMicroseconds(1000);
 	}
 	delay(1000); // Wait a second
-} */
+} 
+*/
