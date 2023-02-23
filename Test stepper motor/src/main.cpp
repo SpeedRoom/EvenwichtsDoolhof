@@ -29,7 +29,6 @@ void loop()
 #include <AccelStepper.h>
 
 
-
 // Motor Connections (constant current, step/direction bipolar motor driver)
 const int dirPiny = 18;
 const int stepPiny = 19;
@@ -52,18 +51,22 @@ void setup() {
   Serial.begin(9600);
   // set the maximum speed and initial speed. The initial speed will be the only
   // speed used. No acceleration will happen - only runSpeed is used. Runs forever.
-  pinMode(switchy,INPUT_PULLDOWN);
-  pinMode(switchx,INPUT_PULLDOWN);
+  pinMode(switchy,INPUT_PULLUP);
+  pinMode(switchx,INPUT_PULLUP);
   pinMode(poty,INPUT);
   pinMode(potx,INPUT);
   mySteppery.setMaxSpeed(1000.0);    // must be equal to or greater than desired speed.
-  mySteppery.setSpeed(500.0);       // desired speed to run at
-  mySteppery.setAcceleration(200);
+  mySteppery.setSpeed(700.0);       // desired speed to run at
+  mySteppery.setAcceleration(350);
   Serial.println("in setup");
+
   while(!digitalRead(switchy)){
-	Serial.println(digitalRead(switchy));
-	mySteppery.move(10);
+	if (!mySteppery.run()){
+		mySteppery.move(-5);
+	}
+	
   }
+  mySteppery.setCurrentPosition(0);
   Serial.println("na de while");
   posy = 0;
 }
@@ -72,10 +75,12 @@ void loop() {
 	//mysteppery.stop()
 	if (!mySteppery.run()){
 		
-		value_poty = analogRead(poty);
-		delay(50);
-		mySteppery.moveTo(value_poty/10);
 	}
+		value_poty = analogRead(poty);
+		Serial.println(value_poty);
+		
+		mySteppery.moveTo(value_poty/30);
+		delay(20);
 
 	//if (!mySteppery.run()){
 	//	mySteppery.moveTo(-mySteppery.currentPosition());
