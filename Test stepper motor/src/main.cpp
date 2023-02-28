@@ -30,6 +30,7 @@ void loop()
 
 
 // Motor Connections (constant current, step/direction bipolar motor driver)
+const int balletje = 27;
 const int dirPiny = 18;
 const int stepPiny = 19;
 const int dirPinx = 33;
@@ -40,7 +41,9 @@ const int poty = 2;
 const int potx = 12;
 int posy = 0;
 int value_poty = 0;
-const int max_rot = 255; 
+int posx = 0;
+int value_potx = 0;
+const int max_rot = 100; 
 
 
 
@@ -53,11 +56,15 @@ void setup() {
   // speed used. No acceleration will happen - only runSpeed is used. Runs forever.
   pinMode(switchy,INPUT_PULLUP);
   pinMode(switchx,INPUT_PULLUP);
+  pinMode(balletje,INPUT_PULLUP);
   pinMode(poty,INPUT);
   pinMode(potx,INPUT);
   mySteppery.setMaxSpeed(1000.0);    // must be equal to or greater than desired speed.
-  mySteppery.setSpeed(700.0);       // desired speed to run at
-  mySteppery.setAcceleration(350);
+  mySteppery.setSpeed(900.0);       // desired speed to run at
+  mySteppery.setAcceleration(550);
+  myStepperx.setMaxSpeed(1000.0);    // must be equal to or greater than desired speed.
+  myStepperx.setSpeed(900.0);       // desired speed to run at
+  myStepperx.setAcceleration(550);
   Serial.println("in setup");
 
   while(!digitalRead(switchy)){
@@ -66,27 +73,32 @@ void setup() {
 	}
 	
   }
+  while(!digitalRead(switchx)){
+	if (!myStepperx.run()){
+		myStepperx.move(-5);
+	}
+	
+  }
   mySteppery.setCurrentPosition(0);
-  Serial.println("na de while");
+  myStepperx.setCurrentPosition(0);
   posy = 0;
+  posx = 0;
 }
 
 void loop() {
 	//mysteppery.stop()
-	if (!mySteppery.run()){
+	while(!digitalRead(balletje)){
+		value_potx = analogRead(potx);
+		posx = (value_potx*max_rot)/4095;
+		myStepperx.moveTo(posx);
+		myStepperx.run();
 		
-	}
 		value_poty = analogRead(poty);
-		Serial.println(value_poty);
-		
-		mySteppery.moveTo(value_poty/30);
-		delay(20);
-
-	//if (!mySteppery.run()){
-	//	mySteppery.moveTo(-mySteppery.currentPosition());
-	//}
-  	
-  	
+		posy = (value_poty*max_rot)/4095;
+		mySteppery.moveTo(posy);
+		mySteppery.run();
+	
+  	}
 }
 
 
