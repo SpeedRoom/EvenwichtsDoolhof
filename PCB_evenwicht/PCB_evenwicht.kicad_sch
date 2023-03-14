@@ -1251,8 +1251,14 @@
   (junction (at 226.06 40.64) (diameter 0) (color 0 0 0 0)
     (uuid 852d981d-61d1-47db-9bf8-58a21f5e9471)
   )
+  (junction (at 229.87 92.71) (diameter 0) (color 0 0 0 0)
+    (uuid 92335f9a-ced5-4fc5-b916-0ed25c50d2bd)
+  )
   (junction (at 106.68 69.85) (diameter 0) (color 0 0 0 0)
     (uuid b77ada04-1521-4c51-bb4d-7f36a63d4520)
+  )
+  (junction (at 215.9 92.71) (diameter 0) (color 0 0 0 0)
+    (uuid c0ac4304-2e52-4c4a-9c69-fa3e21f436ef)
   )
   (junction (at 194.31 102.87) (diameter 0) (color 0 0 0 0)
     (uuid cb01be00-1588-430b-8ba8-364272273bfb)
@@ -1296,6 +1302,14 @@
   (wire (pts (xy 17.78 45.72) (xy 20.32 45.72))
     (stroke (width 0) (type default))
     (uuid 01d6c50f-cd37-48bb-8b17-c2a67a785ac1)
+  )
+  (wire (pts (xy 234.95 87.63) (xy 234.95 92.71))
+    (stroke (width 0) (type default))
+    (uuid 02554c67-eb0e-406a-8406-7fc2a3e9bece)
+  )
+  (wire (pts (xy 234.95 77.47) (xy 215.9 77.47))
+    (stroke (width 0) (type default))
+    (uuid 0395bc0d-37a3-4ac9-aaf3-b99c66d9da74)
   )
   (wire (pts (xy 27.94 45.72) (xy 33.02 45.72))
     (stroke (width 0) (type default))
@@ -1352,6 +1366,10 @@
   (wire (pts (xy 163.83 74.93) (xy 177.8 74.93))
     (stroke (width 0) (type default))
     (uuid 211cfb3a-6d2d-4168-9c02-f97aa301644e)
+  )
+  (wire (pts (xy 229.87 92.71) (xy 215.9 92.71))
+    (stroke (width 0) (type default))
+    (uuid 263ce1a0-92b6-4d92-a2c0-ed7b06b1ac6b)
   )
   (wire (pts (xy 171.45 100.33) (xy 171.45 102.87))
     (stroke (width 0) (type default))
@@ -1441,6 +1459,10 @@
     (stroke (width 0) (type default))
     (uuid 53ce5bb0-ddad-4d0d-b2fa-9cbc2aa064ed)
   )
+  (wire (pts (xy 234.95 80.01) (xy 234.95 77.47))
+    (stroke (width 0) (type default))
+    (uuid 53f84e58-05d3-492c-820e-cb4d53bceae3)
+  )
   (wire (pts (xy 91.44 100.33) (xy 100.33 100.33))
     (stroke (width 0) (type default))
     (uuid 5450b0b8-06db-4d28-8f59-599fb7fa8aec)
@@ -1521,6 +1543,10 @@
     (stroke (width 0) (type default))
     (uuid 703b6c66-d807-456c-ace0-a8aa7f518916)
   )
+  (wire (pts (xy 173.99 24.13) (xy 173.99 26.67))
+    (stroke (width 0) (type default))
+    (uuid 7607dba3-7dd0-4339-9584-b54ea218a1de)
+  )
   (wire (pts (xy 29.21 147.32) (xy 34.29 147.32))
     (stroke (width 0) (type default))
     (uuid 7822ca9f-7fd1-4c1c-bc13-7096918d0c24)
@@ -1560,6 +1586,10 @@
   (wire (pts (xy 173.99 34.29) (xy 173.99 36.83))
     (stroke (width 0) (type default))
     (uuid 9ce8320e-7401-49f9-a016-96ea36ef9131)
+  )
+  (wire (pts (xy 229.87 80.01) (xy 215.9 80.01))
+    (stroke (width 0) (type default))
+    (uuid 9f592871-a1c2-4544-9b88-522b56fb5693)
   )
   (wire (pts (xy 240.03 46.99) (xy 240.03 52.07))
     (stroke (width 0) (type default))
@@ -1609,6 +1639,10 @@
     (stroke (width 0) (type default))
     (uuid ca9d6384-ee56-4ce1-a133-cbef6105f910)
   )
+  (wire (pts (xy 229.87 92.71) (xy 234.95 92.71))
+    (stroke (width 0) (type default))
+    (uuid cdcdcccf-1a35-4cfe-ba58-52171acdd9c5)
+  )
   (wire (pts (xy 88.9 68.58) (xy 88.9 72.39))
     (stroke (width 0) (type default))
     (uuid cfea6fda-ffba-49cd-8bfb-fe7a860d6515)
@@ -1636,6 +1670,10 @@
   (wire (pts (xy 91.44 95.25) (xy 100.33 95.25))
     (stroke (width 0) (type default))
     (uuid e806c9b2-fb27-4969-a9f4-7be18bb53f80)
+  )
+  (wire (pts (xy 229.87 87.63) (xy 229.87 92.71))
+    (stroke (width 0) (type default))
+    (uuid e9c07600-278a-4c8b-9695-4fc0ccd339f8)
   )
   (wire (pts (xy 88.9 58.42) (xy 88.9 60.96))
     (stroke (width 0) (type default))
@@ -1682,6 +1720,11 @@
     (uuid ff677dfd-342a-43df-b758-4aa23fdeb501)
   )
 
+  (text "NOG een 4.7uf condensator denk ik ergens plaatsen\n"
+    (at 226.06 74.93 0)
+    (effects (font (size 1.27 1.27)) (justify left bottom))
+    (uuid 7b925baa-c273-4217-8759-cb3639276292)
+  )
   (text "POWER PART" (at 82.55 35.56 0)
     (effects (font (size 5 5)) (justify left bottom))
     (uuid 84a0f086-ce54-4bb2-ac14-8e2c6e6cd53d)
@@ -2279,7 +2322,7 @@
   (symbol (lib_id "power:GND") (at 177.8 69.85 270) (unit 1)
     (in_bom yes) (on_board yes) (dnp no) (fields_autoplaced)
     (uuid 300ffe4f-277c-4169-ab08-7575c8f2dca5)
-    (property "Reference" "#PWR026" (at 171.45 69.85 0)
+    (property "Reference" "#PWR029" (at 171.45 69.85 0)
       (effects (font (size 1.27 1.27)) hide)
     )
     (property "Value" "GND" (at 173.99 70.485 90)
@@ -2295,7 +2338,7 @@
     (instances
       (project "PCB_evenwicht"
         (path "/1568d5f0-bcdb-494d-bbf5-b93d65138b4f"
-          (reference "#PWR026") (unit 1)
+          (reference "#PWR029") (unit 1)
         )
       )
     )
@@ -2304,7 +2347,7 @@
   (symbol (lib_id "Connector:Conn_01x03_Pin") (at 237.49 110.49 0) (unit 1)
     (in_bom yes) (on_board yes) (dnp no) (fields_autoplaced)
     (uuid 3e53937c-2dab-4c4e-b46b-7593fdfca211)
-    (property "Reference" "J4" (at 238.125 104.14 0)
+    (property "Reference" "J5" (at 238.125 104.14 0)
       (effects (font (size 1.27 1.27)))
     )
     (property "Value" "POTy" (at 238.125 106.68 0)
@@ -2322,7 +2365,7 @@
     (instances
       (project "PCB_evenwicht"
         (path "/1568d5f0-bcdb-494d-bbf5-b93d65138b4f"
-          (reference "J4") (unit 1)
+          (reference "J5") (unit 1)
         )
       )
     )
@@ -2356,7 +2399,7 @@
   (symbol (lib_id "Connector:Barrel_Jack") (at 83.82 97.79 0) (unit 1)
     (in_bom yes) (on_board yes) (dnp no) (fields_autoplaced)
     (uuid 3f181105-2cdd-4dd8-beb5-b6aa4d9451fc)
-    (property "Reference" "J2" (at 83.82 90.17 0)
+    (property "Reference" "J1" (at 83.82 90.17 0)
       (effects (font (size 1.27 1.27)))
     )
     (property "Value" "Barrel_Jack" (at 83.82 92.71 0)
@@ -2373,7 +2416,7 @@
     (instances
       (project "PCB_evenwicht"
         (path "/1568d5f0-bcdb-494d-bbf5-b93d65138b4f"
-          (reference "J2") (unit 1)
+          (reference "J1") (unit 1)
         )
       )
     )
@@ -2459,7 +2502,7 @@
   (symbol (lib_id "power:GND") (at 177.8 82.55 270) (unit 1)
     (in_bom yes) (on_board yes) (dnp no)
     (uuid 47174de5-ea22-4adf-97fb-780e5ea47b19)
-    (property "Reference" "#PWR028" (at 171.45 82.55 0)
+    (property "Reference" "#PWR031" (at 171.45 82.55 0)
       (effects (font (size 1.27 1.27)) hide)
     )
     (property "Value" "GND" (at 175.26 82.55 90)
@@ -2475,7 +2518,7 @@
     (instances
       (project "PCB_evenwicht"
         (path "/1568d5f0-bcdb-494d-bbf5-b93d65138b4f"
-          (reference "#PWR028") (unit 1)
+          (reference "#PWR031") (unit 1)
         )
       )
       (project "a4988"
@@ -2546,7 +2589,7 @@
   (symbol (lib_id "power:GND") (at 153.67 110.49 90) (unit 1)
     (in_bom yes) (on_board yes) (dnp no) (fields_autoplaced)
     (uuid 51215610-259b-420c-bc5c-ea5d773baf89)
-    (property "Reference" "#PWR037" (at 160.02 110.49 0)
+    (property "Reference" "#PWR024" (at 160.02 110.49 0)
       (effects (font (size 1.27 1.27)) hide)
     )
     (property "Value" "GND" (at 157.48 111.125 90)
@@ -2562,7 +2605,7 @@
     (instances
       (project "PCB_evenwicht"
         (path "/1568d5f0-bcdb-494d-bbf5-b93d65138b4f"
-          (reference "#PWR037") (unit 1)
+          (reference "#PWR024") (unit 1)
         )
       )
     )
@@ -2715,7 +2758,7 @@
   (symbol (lib_id "power:GND") (at 177.8 80.01 270) (unit 1)
     (in_bom yes) (on_board yes) (dnp no)
     (uuid 56bca902-cd33-4ed7-b0b3-d75688cfe75d)
-    (property "Reference" "#PWR027" (at 171.45 80.01 0)
+    (property "Reference" "#PWR030" (at 171.45 80.01 0)
       (effects (font (size 1.27 1.27)) hide)
     )
     (property "Value" "GND" (at 175.26 80.01 90)
@@ -2731,7 +2774,7 @@
     (instances
       (project "PCB_evenwicht"
         (path "/1568d5f0-bcdb-494d-bbf5-b93d65138b4f"
-          (reference "#PWR027") (unit 1)
+          (reference "#PWR030") (unit 1)
         )
       )
       (project "a4988"
@@ -2770,7 +2813,7 @@
   (symbol (lib_id "power:GND") (at 171.45 119.38 0) (unit 1)
     (in_bom yes) (on_board yes) (dnp no) (fields_autoplaced)
     (uuid 60d3d205-aad7-4967-a4e2-cb3849e37c37)
-    (property "Reference" "#PWR039" (at 171.45 125.73 0)
+    (property "Reference" "#PWR027" (at 171.45 125.73 0)
       (effects (font (size 1.27 1.27)) hide)
     )
     (property "Value" "GND" (at 171.45 124.46 0)
@@ -2786,7 +2829,7 @@
     (instances
       (project "PCB_evenwicht"
         (path "/1568d5f0-bcdb-494d-bbf5-b93d65138b4f"
-          (reference "#PWR039") (unit 1)
+          (reference "#PWR027") (unit 1)
         )
       )
     )
@@ -2827,7 +2870,7 @@
   (symbol (lib_id "Connector:Conn_01x04_Pin") (at 90.17 137.16 0) (unit 1)
     (in_bom yes) (on_board yes) (dnp no) (fields_autoplaced)
     (uuid 62b7e8ef-8e7b-42fb-9736-00fa8acedea9)
-    (property "Reference" "J1" (at 90.805 130.81 0)
+    (property "Reference" "J2" (at 90.805 130.81 0)
       (effects (font (size 1.27 1.27)))
     )
     (property "Value" "Conn_01x04_Pin" (at 90.805 133.35 0)
@@ -2846,7 +2889,7 @@
     (instances
       (project "PCB_evenwicht"
         (path "/1568d5f0-bcdb-494d-bbf5-b93d65138b4f"
-          (reference "J1") (unit 1)
+          (reference "J2") (unit 1)
         )
       )
     )
@@ -2903,19 +2946,19 @@
     )
   )
 
-  (symbol (lib_id "Device:R") (at 219.71 80.01 90) (unit 1)
+  (symbol (lib_id "Device:R") (at 229.87 83.82 0) (unit 1)
     (in_bom yes) (on_board yes) (dnp no)
     (uuid 723380ba-c07c-459a-a510-91c57d9e62df)
-    (property "Reference" "R11" (at 219.71 80.01 90)
+    (property "Reference" "R10" (at 229.87 83.82 90)
       (effects (font (size 1.27 1.27)))
     )
-    (property "Value" "50m" (at 219.71 82.55 90)
+    (property "Value" "50m" (at 227.33 83.82 90)
       (effects (font (size 1.27 1.27)))
     )
-    (property "Footprint" "" (at 219.71 81.788 90)
+    (property "Footprint" "" (at 228.092 83.82 90)
       (effects (font (size 1.27 1.27)) hide)
     )
-    (property "Datasheet" "~" (at 219.71 80.01 0)
+    (property "Datasheet" "~" (at 229.87 83.82 0)
       (effects (font (size 1.27 1.27)) hide)
     )
     (pin "1" (uuid 822f3797-5ba6-423d-9c07-19de041ba340))
@@ -2923,7 +2966,7 @@
     (instances
       (project "PCB_evenwicht"
         (path "/1568d5f0-bcdb-494d-bbf5-b93d65138b4f"
-          (reference "R11") (unit 1)
+          (reference "R10") (unit 1)
         )
       )
       (project "a4988"
@@ -3120,7 +3163,7 @@
   (symbol (lib_id "power:+3.3V") (at 245.11 113.03 270) (unit 1)
     (in_bom yes) (on_board yes) (dnp no) (fields_autoplaced)
     (uuid 7c8e236b-da36-4f40-af71-34e03f659251)
-    (property "Reference" "#PWR036" (at 241.3 113.03 0)
+    (property "Reference" "#PWR035" (at 241.3 113.03 0)
       (effects (font (size 1.27 1.27)) hide)
     )
     (property "Value" "+3.3V" (at 248.92 113.665 90)
@@ -3136,7 +3179,7 @@
     (instances
       (project "PCB_evenwicht"
         (path "/1568d5f0-bcdb-494d-bbf5-b93d65138b4f"
-          (reference "#PWR036") (unit 1)
+          (reference "#PWR035") (unit 1)
         )
       )
     )
@@ -3171,7 +3214,7 @@
   (symbol (lib_id "power:+3.3V") (at 171.45 100.33 0) (unit 1)
     (in_bom yes) (on_board yes) (dnp no) (fields_autoplaced)
     (uuid 7d91b48f-3a2d-47c8-b83d-250807c8f086)
-    (property "Reference" "#PWR038" (at 171.45 104.14 0)
+    (property "Reference" "#PWR026" (at 171.45 104.14 0)
       (effects (font (size 1.27 1.27)) hide)
     )
     (property "Value" "+3.3V" (at 171.45 96.52 0)
@@ -3187,7 +3230,7 @@
     (instances
       (project "PCB_evenwicht"
         (path "/1568d5f0-bcdb-494d-bbf5-b93d65138b4f"
-          (reference "#PWR038") (unit 1)
+          (reference "#PWR026") (unit 1)
         )
       )
     )
@@ -3222,7 +3265,7 @@
   (symbol (lib_id "power:GND") (at 170.18 41.91 270) (unit 1)
     (in_bom yes) (on_board yes) (dnp no) (fields_autoplaced)
     (uuid 87bc98ed-eed7-4545-a6a1-9f729c7b1c0d)
-    (property "Reference" "#PWR024" (at 163.83 41.91 0)
+    (property "Reference" "#PWR025" (at 163.83 41.91 0)
       (effects (font (size 1.27 1.27)) hide)
     )
     (property "Value" "GND" (at 166.37 42.545 90)
@@ -3238,7 +3281,7 @@
     (instances
       (project "PCB_evenwicht"
         (path "/1568d5f0-bcdb-494d-bbf5-b93d65138b4f"
-          (reference "#PWR024") (unit 1)
+          (reference "#PWR025") (unit 1)
         )
       )
       (project "a4988"
@@ -3319,36 +3362,6 @@
       (project "PCB_evenwicht"
         (path "/1568d5f0-bcdb-494d-bbf5-b93d65138b4f"
           (reference "#FLG02") (unit 1)
-        )
-      )
-    )
-  )
-
-  (symbol (lib_id "power:GND") (at 223.52 80.01 90) (unit 1)
-    (in_bom yes) (on_board yes) (dnp no) (fields_autoplaced)
-    (uuid 91e2d126-8801-46af-86fd-368e1e74f3cf)
-    (property "Reference" "#PWR032" (at 229.87 80.01 0)
-      (effects (font (size 1.27 1.27)) hide)
-    )
-    (property "Value" "GND" (at 227.33 80.645 90)
-      (effects (font (size 1.27 1.27)) (justify right))
-    )
-    (property "Footprint" "" (at 223.52 80.01 0)
-      (effects (font (size 1.27 1.27)) hide)
-    )
-    (property "Datasheet" "" (at 223.52 80.01 0)
-      (effects (font (size 1.27 1.27)) hide)
-    )
-    (pin "1" (uuid 549dcdfe-9ff5-41f4-a9f7-6a941cf00f95))
-    (instances
-      (project "PCB_evenwicht"
-        (path "/1568d5f0-bcdb-494d-bbf5-b93d65138b4f"
-          (reference "#PWR032") (unit 1)
-        )
-      )
-      (project "a4988"
-        (path "/33277f75-9959-42fa-8608-f9642a2ecd81"
-          (reference "#PWR?") (unit 1)
         )
       )
     )
@@ -3648,19 +3661,19 @@
     )
   )
 
-  (symbol (lib_id "Device:R") (at 219.71 77.47 90) (unit 1)
+  (symbol (lib_id "Device:R") (at 234.95 83.82 0) (unit 1)
     (in_bom yes) (on_board yes) (dnp no)
     (uuid b1bcb386-3358-4e98-bbdd-94e97ab5135c)
-    (property "Reference" "R10" (at 219.71 74.93 90)
+    (property "Reference" "R11" (at 237.49 83.82 90)
       (effects (font (size 1.27 1.27)))
     )
-    (property "Value" "50m" (at 219.71 77.47 90)
+    (property "Value" "50m" (at 234.95 83.82 90)
       (effects (font (size 1.27 1.27)))
     )
-    (property "Footprint" "" (at 219.71 79.248 90)
+    (property "Footprint" "" (at 233.172 83.82 90)
       (effects (font (size 1.27 1.27)) hide)
     )
-    (property "Datasheet" "~" (at 219.71 77.47 0)
+    (property "Datasheet" "~" (at 234.95 83.82 0)
       (effects (font (size 1.27 1.27)) hide)
     )
     (pin "1" (uuid 0a054c52-5201-4cad-86c6-88d6ee56074e))
@@ -3668,7 +3681,7 @@
     (instances
       (project "PCB_evenwicht"
         (path "/1568d5f0-bcdb-494d-bbf5-b93d65138b4f"
-          (reference "R10") (unit 1)
+          (reference "R11") (unit 1)
         )
       )
       (project "a4988"
@@ -3682,7 +3695,7 @@
   (symbol (lib_id "power:GND") (at 247.65 40.64 90) (unit 1)
     (in_bom yes) (on_board yes) (dnp no) (fields_autoplaced)
     (uuid b7f3a132-8ee2-4c7b-80a1-d0bd2ce122a0)
-    (property "Reference" "#PWR033" (at 254 40.64 0)
+    (property "Reference" "#PWR036" (at 254 40.64 0)
       (effects (font (size 1.27 1.27)) hide)
     )
     (property "Value" "GND" (at 251.46 41.275 90)
@@ -3698,37 +3711,7 @@
     (instances
       (project "PCB_evenwicht"
         (path "/1568d5f0-bcdb-494d-bbf5-b93d65138b4f"
-          (reference "#PWR033") (unit 1)
-        )
-      )
-      (project "a4988"
-        (path "/33277f75-9959-42fa-8608-f9642a2ecd81"
-          (reference "#PWR?") (unit 1)
-        )
-      )
-    )
-  )
-
-  (symbol (lib_id "power:GND") (at 223.52 77.47 90) (unit 1)
-    (in_bom yes) (on_board yes) (dnp no) (fields_autoplaced)
-    (uuid b99d528a-c883-4c3f-9e27-005a6a878420)
-    (property "Reference" "#PWR031" (at 229.87 77.47 0)
-      (effects (font (size 1.27 1.27)) hide)
-    )
-    (property "Value" "GND" (at 227.33 78.105 90)
-      (effects (font (size 1.27 1.27)) (justify right))
-    )
-    (property "Footprint" "" (at 223.52 77.47 0)
-      (effects (font (size 1.27 1.27)) hide)
-    )
-    (property "Datasheet" "" (at 223.52 77.47 0)
-      (effects (font (size 1.27 1.27)) hide)
-    )
-    (pin "1" (uuid b90ca0b1-74db-413a-ba28-10244cb7ee35))
-    (instances
-      (project "PCB_evenwicht"
-        (path "/1568d5f0-bcdb-494d-bbf5-b93d65138b4f"
-          (reference "#PWR031") (unit 1)
+          (reference "#PWR036") (unit 1)
         )
       )
       (project "a4988"
@@ -3742,7 +3725,7 @@
   (symbol (lib_id "power:GND") (at 245.11 107.95 90) (unit 1)
     (in_bom yes) (on_board yes) (dnp no) (fields_autoplaced)
     (uuid c42d2bcb-087d-4d7f-9d90-8e6b9ae64541)
-    (property "Reference" "#PWR035" (at 251.46 107.95 0)
+    (property "Reference" "#PWR034" (at 251.46 107.95 0)
       (effects (font (size 1.27 1.27)) hide)
     )
     (property "Value" "GND" (at 248.92 108.585 90)
@@ -3758,7 +3741,7 @@
     (instances
       (project "PCB_evenwicht"
         (path "/1568d5f0-bcdb-494d-bbf5-b93d65138b4f"
-          (reference "#PWR035") (unit 1)
+          (reference "#PWR034") (unit 1)
         )
       )
     )
@@ -3767,7 +3750,7 @@
   (symbol (lib_id "Connector:Conn_01x02_Pin") (at 147.32 107.95 0) (unit 1)
     (in_bom yes) (on_board yes) (dnp no) (fields_autoplaced)
     (uuid c4665e83-60f6-4f60-922b-972590877c75)
-    (property "Reference" "J5" (at 147.955 104.14 0)
+    (property "Reference" "J3" (at 147.955 104.14 0)
       (effects (font (size 1.27 1.27)))
     )
     (property "Value" "Switchy" (at 147.955 106.68 0)
@@ -3784,37 +3767,7 @@
     (instances
       (project "PCB_evenwicht"
         (path "/1568d5f0-bcdb-494d-bbf5-b93d65138b4f"
-          (reference "J5") (unit 1)
-        )
-      )
-    )
-  )
-
-  (symbol (lib_id "power:GND") (at 173.99 26.67 180) (unit 1)
-    (in_bom yes) (on_board yes) (dnp no) (fields_autoplaced)
-    (uuid c53248e6-5cfd-4c0b-9fad-fce7969e5efa)
-    (property "Reference" "#PWR025" (at 173.99 20.32 0)
-      (effects (font (size 1.27 1.27)) hide)
-    )
-    (property "Value" "GND" (at 173.99 22.86 0)
-      (effects (font (size 1.27 1.27)))
-    )
-    (property "Footprint" "" (at 173.99 26.67 0)
-      (effects (font (size 1.27 1.27)) hide)
-    )
-    (property "Datasheet" "" (at 173.99 26.67 0)
-      (effects (font (size 1.27 1.27)) hide)
-    )
-    (pin "1" (uuid 3bb206cc-bb8b-4e07-b23d-0f3b73801238))
-    (instances
-      (project "PCB_evenwicht"
-        (path "/1568d5f0-bcdb-494d-bbf5-b93d65138b4f"
-          (reference "#PWR025") (unit 1)
-        )
-      )
-      (project "a4988"
-        (path "/33277f75-9959-42fa-8608-f9642a2ecd81"
-          (reference "#PWR?") (unit 1)
+          (reference "J3") (unit 1)
         )
       )
     )
@@ -3874,7 +3827,7 @@
   (symbol (lib_id "power:GND") (at 220.98 25.4 180) (unit 1)
     (in_bom yes) (on_board yes) (dnp no) (fields_autoplaced)
     (uuid cac0a0d7-e5e4-4b51-9b36-2a06c66903ad)
-    (property "Reference" "#PWR030" (at 220.98 19.05 0)
+    (property "Reference" "#PWR033" (at 220.98 19.05 0)
       (effects (font (size 1.27 1.27)) hide)
     )
     (property "Value" "GND" (at 220.98 21.59 0)
@@ -3890,7 +3843,7 @@
     (instances
       (project "PCB_evenwicht"
         (path "/1568d5f0-bcdb-494d-bbf5-b93d65138b4f"
-          (reference "#PWR030") (unit 1)
+          (reference "#PWR033") (unit 1)
         )
       )
       (project "a4988"
@@ -3922,6 +3875,31 @@
       (project "PCB_evenwicht"
         (path "/1568d5f0-bcdb-494d-bbf5-b93d65138b4f"
           (reference "SW2") (unit 1)
+        )
+      )
+    )
+  )
+
+  (symbol (lib_id "power:+3.3V") (at 173.99 24.13 0) (unit 1)
+    (in_bom yes) (on_board yes) (dnp no) (fields_autoplaced)
+    (uuid d01e3136-676d-4c73-944c-38faf6714280)
+    (property "Reference" "#PWR028" (at 173.99 27.94 0)
+      (effects (font (size 1.27 1.27)) hide)
+    )
+    (property "Value" "+3.3V" (at 173.99 20.32 0)
+      (effects (font (size 1.27 1.27)))
+    )
+    (property "Footprint" "" (at 173.99 24.13 0)
+      (effects (font (size 1.27 1.27)) hide)
+    )
+    (property "Datasheet" "" (at 173.99 24.13 0)
+      (effects (font (size 1.27 1.27)) hide)
+    )
+    (pin "1" (uuid 72e94028-f19a-416b-8546-bc4042841b73))
+    (instances
+      (project "PCB_evenwicht"
+        (path "/1568d5f0-bcdb-494d-bbf5-b93d65138b4f"
+          (reference "#PWR028") (unit 1)
         )
       )
     )
@@ -3987,7 +3965,7 @@
   (symbol (lib_id "power:GND") (at 248.92 54.61 0) (unit 1)
     (in_bom yes) (on_board yes) (dnp no) (fields_autoplaced)
     (uuid d9866300-5747-41b9-bf0d-d0174247ef64)
-    (property "Reference" "#PWR034" (at 248.92 60.96 0)
+    (property "Reference" "#PWR037" (at 248.92 60.96 0)
       (effects (font (size 1.27 1.27)) hide)
     )
     (property "Value" "GND" (at 248.92 59.69 0)
@@ -4003,7 +3981,7 @@
     (instances
       (project "PCB_evenwicht"
         (path "/1568d5f0-bcdb-494d-bbf5-b93d65138b4f"
-          (reference "#PWR034") (unit 1)
+          (reference "#PWR037") (unit 1)
         )
       )
       (project "a4988"
@@ -4017,7 +3995,7 @@
   (symbol (lib_id "Connector:Conn_01x04_Pin") (at 234.95 66.04 180) (unit 1)
     (in_bom yes) (on_board yes) (dnp no) (fields_autoplaced)
     (uuid df084178-15da-4a90-9aee-3cbeec7fdeda)
-    (property "Reference" "J3" (at 236.22 64.135 0)
+    (property "Reference" "J4" (at 236.22 64.135 0)
       (effects (font (size 1.27 1.27)) (justify right))
     )
     (property "Value" "Conn_01x04_Pin" (at 236.22 66.675 0)
@@ -4036,7 +4014,7 @@
     (instances
       (project "PCB_evenwicht"
         (path "/1568d5f0-bcdb-494d-bbf5-b93d65138b4f"
-          (reference "J3") (unit 1)
+          (reference "J4") (unit 1)
         )
       )
     )
@@ -4045,7 +4023,7 @@
   (symbol (lib_id "power:GND") (at 215.9 92.71 0) (unit 1)
     (in_bom yes) (on_board yes) (dnp no)
     (uuid e3e0c97a-05e6-41bc-8d77-a347cbb9f012)
-    (property "Reference" "#PWR029" (at 215.9 99.06 0)
+    (property "Reference" "#PWR032" (at 215.9 99.06 0)
       (effects (font (size 1.27 1.27)) hide)
     )
     (property "Value" "GND" (at 215.9 97.79 0)
@@ -4061,7 +4039,7 @@
     (instances
       (project "PCB_evenwicht"
         (path "/1568d5f0-bcdb-494d-bbf5-b93d65138b4f"
-          (reference "#PWR029") (unit 1)
+          (reference "#PWR032") (unit 1)
         )
       )
       (project "a4988"
