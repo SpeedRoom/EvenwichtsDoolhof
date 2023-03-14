@@ -1,0 +1,6 @@
+(sym_lib_table
+  (version 7)
+  (lib (name "Lib")(type "KiCad")(uri "${KIPRJMOD}/Lib/Lib.kicad_sym")(options "")(descr ""))
+  (lib (name "SparkFun-Switches")(type "Legacy")(uri "${KIPRJMOD}/Lib/SparkFun-Switches.lib")(options "")(descr ""))
+  (lib (name "A4988SETTR-T")(type "KiCad")(uri "${KIPRJMOD}/Lib/A4988SETTR-T.kicad_sym")(options "")(descr ""))
+)
