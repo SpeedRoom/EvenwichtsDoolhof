@@ -441,6 +441,7 @@
     )
   )
 
+
   (junction (at 101.6 49.53) (diameter 0) (color 0 0 0 0)
     (uuid 0d137721-4342-44e9-bbdf-2f832e5558b5)
   )
@@ -465,6 +466,7 @@
 
   (no_connect (at 78.74 105.41) (uuid 051fce79-628e-4bf9-a531-c38eadc54753))
   (no_connect (at 76.2 105.41) (uuid 444af41d-2573-445a-a68d-72dc76d38a4a))
+  (no_connect (at 58.42 95.25) (uuid 53b78777-2b9a-4c96-8d30-0243973e9d41))
   (no_connect (at 73.66 105.41) (uuid fd834078-8289-4a87-bc68-b2fbd0ecc9e3))
 
   (wire (pts (xy 107.95 67.31) (xy 107.95 71.12))

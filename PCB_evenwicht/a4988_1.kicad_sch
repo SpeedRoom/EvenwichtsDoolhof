@@ -463,6 +463,7 @@
     (uuid c176a01d-58d1-44ac-8125-07ebb23e77a1)
   )
 
+  (no_connect (at 64.77 97.79) (uuid 212e55b0-2b24-4e30-976f-81449c82d39b))
   (no_connect (at 80.01 107.95) (uuid 4bf00654-665d-4638-a5f3-d4a1f8682320))
   (no_connect (at 85.09 107.95) (uuid 7e5ddd06-885f-4dae-91d6-9b2ca704ad9e))
   (no_connect (at 82.55 107.95) (uuid de8e680d-9c86-41d2-a0f3-0aadb122961a))
