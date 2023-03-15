@@ -43,7 +43,8 @@ int posy = 0;
 int value_poty = 0;
 int posx = 0;
 int value_potx = 0;
-const int max_rot = 100; 
+const int max_roty = 120;
+const int max_rotx = 170;
 
 
 
@@ -69,7 +70,7 @@ void setup() {
 
   while(!digitalRead(switchy)){
 	if (!mySteppery.run()){
-		mySteppery.move(-5);
+		mySteppery.move(5);
 	}
 	
   }
@@ -87,18 +88,17 @@ void setup() {
 
 void loop() {
 	//mysteppery.stop()
-	while(!digitalRead(balletje)){
+	//while(!digitalRead(balletje)){
 		value_potx = analogRead(potx);
-		posx = (value_potx*max_rot)/4095;
+		posx = (value_potx*max_rotx)/4095;
 		myStepperx.moveTo(posx);
 		myStepperx.run();
 		
 		value_poty = analogRead(poty);
-		posy = (value_poty*max_rot)/4095;
+		posy = -(value_poty*max_roty)/4095;
 		mySteppery.moveTo(posy);
 		mySteppery.run();
-	
-  	}
+  	//}
 }
 
 
