@@ -24,9 +24,15 @@ void loop()
     Serial.println(digitalRead(4));
 }*/
 
-
+// naam esp: espdoolhof
+// wachtwoord esp: espdoolhof
 
 #include <AccelStepper.h>
+#include <WiFi.h>
+#include "OTAlib.h"
+
+//OTA
+OTAlib ota("NETGEAR68", "excitedtuba713");
 
 
 // Motor Connections (constant current, step/direction bipolar motor driver)
@@ -52,6 +58,11 @@ AccelStepper mySteppery(AccelStepper::DRIVER, stepPiny, dirPiny);   // works for
 AccelStepper myStepperx(AccelStepper::DRIVER, stepPinx, dirPinx);
 
 void setup() {
+	// OTA
+  ota.setHostname("espdoolhof");  
+  ota.setPassword("espdoolhof");
+  ota.begin();
+
   Serial.begin(9600);
   // set the maximum speed and initial speed. The initial speed will be the only
   // speed used. No acceleration will happen - only runSpeed is used. Runs forever.
