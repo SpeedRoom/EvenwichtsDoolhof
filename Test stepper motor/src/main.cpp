@@ -36,15 +36,15 @@ OTAlib ota("NETGEAR68", "excitedtuba713");
 
 
 // Motor Connections (constant current, step/direction bipolar motor driver)
-const int balletje = 27;
+const int balletje = 12;
 const int dirPiny = 18;
 const int stepPiny = 19;
 const int dirPinx = 33;
 const int stepPinx = 32;
-const int switchy = 4;
-const int switchx = 14;
-const int poty = 2;
-const int potx = 12;
+const int switchy = 14;
+const int switchx = 27;
+const int poty = 26;
+const int potx = 25;
 int posy = 0;
 int value_poty = 0;
 int posx = 0;
@@ -59,11 +59,11 @@ AccelStepper myStepperx(AccelStepper::DRIVER, stepPinx, dirPinx);
 
 void setup() {
 	// OTA
-  ota.setHostname("espdoolhof");  
-  ota.setPassword("espdoolhof");
-  ota.begin();
+  //ota.setHostname("espdoolhof");  
+  //ota.setPassword("espdoolhof");
+  //ota.begin();
 
-  Serial.begin(9600);
+  Serial.begin(115200);
   // set the maximum speed and initial speed. The initial speed will be the only
   // speed used. No acceleration will happen - only runSpeed is used. Runs forever.
   pinMode(switchy,INPUT_PULLUP);
