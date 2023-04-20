@@ -2816,9 +2816,9 @@
       (stroke (width 0.1) (type solid)) (layer "F.Fab") (tstamp 659da9c7-701c-4175-9b10-dbb2a08f8dd2))
     (fp_line (start 1 0.625) (end -1 0.625)
       (stroke (width 0.1) (type solid)) (layer "F.Fab") (tstamp dcb88212-7e09-4f6f-a571-daaac579aa9b))
-    (pad "1" smd roundrect (at -1.0375 0 90) (size 1.175 1.45) (layers "F.Cu" "F.Paste" "F.Mask") (roundrect_rratio 0.212766)
+    (pad "1" smd roundrect (at -1.0375 0 90) (size 1.175 1.45) (layers "F.Cu" "F.Paste" "F.Mask") (roundrect_rratio 0.2127659574)
       (net 2 "GND") (pintype "passive") (tstamp 14f26d87-c5df-4286-830c-1e1e4f983442))
-    (pad "2" smd roundrect (at 1.0375 0 90) (size 1.175 1.45) (layers "F.Cu" "F.Paste" "F.Mask") (roundrect_rratio 0.212766)
+    (pad "2" smd roundrect (at 1.0375 0 90) (size 1.175 1.45) (layers "F.Cu" "F.Paste" "F.Mask") (roundrect_rratio 0.2127659574)
       (net 53 "Vmot") (pintype "passive") (tstamp a9a0ea41-7f78-43a2-aeda-4fa4148f7c16))
     (model "${KICAD6_3DMODEL_DIR}/Capacitor_SMD.3dshapes/C_0805_2012Metric.wrl"
       (offset (xyz 0 0 0))
@@ -3533,9 +3533,9 @@
       (stroke (width 0.1) (type solid)) (layer "F.Fab") (tstamp 36d6e6d9-d32a-4bfe-98dc-1368689dd239))
     (fp_line (start 1 0.625) (end -1 0.625)
       (stroke (width 0.1) (type solid)) (layer "F.Fab") (tstamp 9deb78d0-1ff3-44f4-8cf6-6bdfde7ecf41))
-    (pad "1" smd roundrect (at -1.0375 0 270) (size 1.175 1.45) (layers "F.Cu" "F.Paste" "F.Mask") (roundrect_rratio 0.212766)
+    (pad "1" smd roundrect (at -1.0375 0 270) (size 1.175 1.45) (layers "F.Cu" "F.Paste" "F.Mask") (roundrect_rratio 0.2127659574)
       (net 2 "GND") (pintype "passive") (tstamp b8ef9066-0332-41ff-b1fb-622795c71a0a))
-    (pad "2" smd roundrect (at 1.0375 0 270) (size 1.175 1.45) (layers "F.Cu" "F.Paste" "F.Mask") (roundrect_rratio 0.212766)
+    (pad "2" smd roundrect (at 1.0375 0 270) (size 1.175 1.45) (layers "F.Cu" "F.Paste" "F.Mask") (roundrect_rratio 0.2127659574)
       (net 53 "Vmot") (pintype "passive") (tstamp ea220bae-f800-436f-ba2c-faf02d4bc14d))
     (model "${KICAD6_3DMODEL_DIR}/Capacitor_SMD.3dshapes/C_0805_2012Metric.wrl"
       (offset (xyz 0 0 0))
