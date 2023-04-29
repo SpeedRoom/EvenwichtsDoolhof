@@ -30,10 +30,44 @@ void loop()
 #include <AccelStepper.h>
 #include <WiFi.h>
 #include "OTAlib.h"
+#include <PubSubClient.h>
 
 //OTA
 OTAlib ota("NETGEAR68", "excitedtuba713");
 
+//MQTT -
+#define SSID          "NETGEAR68"
+#define PWD           "excitedtuba713"
+#define MQTT_SERVER   "192.168.0.190"  
+#define MQTT_PORT     1883
+
+topic = "esp_doolhof/output";
+
+WiFiClient espClient;
+PubSubClient client(espClient);
+
+const char *ssid = "NETGEAR68";
+const char *password = "excitedtuba713";
+
+void setup_wifi()
+{
+  delay(10);
+  Serial.println("Connecting to WiFi..");
+
+  WiFi.begin(SSID, PWD);
+
+  while (WiFi.status() != WL_CONNECTED)
+  {
+    delay(500);
+    Serial.print(".");
+  }
+
+  Serial.println("");
+  Serial.println("WiFi connected");
+  Serial.println("IP address: ");
+  Serial.println(WiFi.localIP());
+}
+// -MQTT
 
 // Motor Connections (constant current, step/direction bipolar motor driver)
 const int balletje = 12;
@@ -59,11 +93,17 @@ AccelStepper myStepperx(AccelStepper::DRIVER, stepPinx, dirPinx);
 
 void setup() {
 	// OTA
-  ota.setHostname("espdoolhof");  
-  ota.setPassword("espdoolhof");
-  ota.begin();
+	ota.setHostname("espdoolhof");  
+	ota.setPassword("espdoolhof");
+	ota.begin();
+
+  	//MQTT -
+    setup_wifi();
+    client.setServer(MQTT_SERVER, MQTT_PORT);
+    // - MQTT
+
+
   vTaskDelay(100);
-  // end OTA
   // set the maximum speed and initial speed. The initial speed will be the only
   // speed used. No acceleration will happen - only runSpeed is used. Runs forever.
   Serial.begin(115200);
@@ -107,7 +147,46 @@ void setup() {
   posx = 0;
 }
 
+//MQTT -
+void reconnect()
+{
+  // Loop until we're reconnected
+  while (!client.connected())
+  {
+    Serial.print("Attempting MQTT connection...");
+    // Attempt to connect
+    // creat unique client ID
+    // in Mosquitto broker enable anom. access
+    if (client.connect("ESP32Client"))
+    {
+      Serial.println("connected");
+      // Subscribe
+      client.subscribe(topic);
+    }
+    else
+    {
+      Serial.print("failed, rc=");
+      Serial.print(client.state());
+      Serial.println(" try again in 1 second");
+      delay(1000);
+    }
+  }
+}
+//- MQTT
+
+
 void loop() {
+	//MQTT -
+    if (!client.connected())
+    {
+        reconnect();
+    }
+    client.loop();
+
+    // client.publish(topic, "datum"); // deze nog plaatsen waar gedetecteerd wordt dat balletje in het juiste gat is gevallen (en "datum" veranderen)
+
+    //- MQTT
+
 	//mysteppery.stop()
 	//while(!digitalRead(balletje)){
 		value_potx = analogRead(potx);
