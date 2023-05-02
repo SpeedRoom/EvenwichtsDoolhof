@@ -23,8 +23,8 @@ PubSubClient client(espClient);
 const char *ssid = "NETGEAR68";
 const char *password = "excitedtuba713";
 
-// Motor Connections (constant current, step/direction bipolar motor driver)
-const int balletje = 12;
+// Pin connections
+const int finish = 12;
 const int dirPiny = 18;
 const int stepPiny = 19;
 const int dirPinx = 33;
@@ -108,7 +108,7 @@ void setup() {
   //pin setup
   pinMode(switchy,INPUT_PULLUP);
   pinMode(switchx,INPUT_PULLUP);
-  pinMode(balletje,INPUT_PULLUP);
+  pinMode(finish,INPUT_PULLUP);
   pinMode(poty,INPUT);
   pinMode(potx,INPUT);
   pinMode(2,OUTPUT);
@@ -142,6 +142,7 @@ void setup() {
 	}
 	taskYIELD();
   }
+  //set home position
   mySteppery.setCurrentPosition(0);
   myStepperx.setCurrentPosition(0);
   posy = 0;
@@ -164,22 +165,23 @@ void loop() {
     //- MQTT
 
 	//mysteppery.stop()
-	//while(!digitalRead(balletje)){
-    //move x to position of the potentiometer
+	//while(!digitalRead(finish)){
+    //move x to the measured position of the potentiometer
 		value_potx = analogRead(potx);
 		posx = (value_potx*max_rotx)/4095;
 		myStepperx.moveTo(posx);
 		myStepperx.run();
-		// move y to position of the potentiometer
+		// move y to the measured position of the potentiometer
 		value_poty = analogRead(poty);
 		posy = -(value_poty*max_roty)/4095;
 		mySteppery.moveTo(posy);
 		mySteppery.run();
+
     //visuel feedback of end of loop function
-		digitalWrite(2, HIGH);
-		delay(50);
-		digitalWrite(2, LOW);
-		delay(50);
+		//digitalWrite(2, HIGH);
+		//delay(50);
+		//digitalWrite(2, LOW);
+		//delay(50);
 
 		taskYIELD();
 		delay(50);
