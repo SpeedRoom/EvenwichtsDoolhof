@@ -100,11 +100,12 @@ void setup() {
 	ota.begin();
 
   //MQTT -
+  Serial.begin(115200);
   setup_wifi();
   client.setServer(MQTT_SERVER, MQTT_PORT);
 
   vTaskDelay(100);
-  Serial.begin(115200);
+  
   //pin setup
   pinMode(switchy,INPUT_PULLUP);
   pinMode(switchx,INPUT_PULLUP);
@@ -120,20 +121,12 @@ void setup() {
   myStepperx.setSpeed(900.0);       // desired speed to run at
   myStepperx.setAcceleration(550); // desired acceleration
   
-  digitalWrite(2, HIGH); // voor visuele controle dat de code werkt
-  while (WiFi.status() != WL_CONNECTED) {
-	delay(500);
-	Serial.println("Connecting to WiFi..");
-  }
-  Serial.println("Connected to the WiFi network");
-  Serial.println(WiFi.localIP());
-  
   //find home position
   while(!digitalRead(switchy)){
 	if (!mySteppery.run()){
 		mySteppery.move(5);
 	}
-	taskYIELD();
+	taskYIELD(); //needed for OTA to work properly (otherwise OTA update will fail) since OTA is running on a different task
   }
   while(!digitalRead(switchx)){
 	if (!myStepperx.run()){
@@ -142,6 +135,7 @@ void setup() {
 	}
 	taskYIELD();
   }
+
   //set home position
   mySteppery.setCurrentPosition(0);
   myStepperx.setCurrentPosition(0);
@@ -161,7 +155,6 @@ void loop() {
     client.loop();
 
     // client.publish(topic, "datum"); // deze nog plaatsen waar gedetecteerd wordt dat balletje in het juiste gat is gevallen (en "datum" veranderen)
-
     //- MQTT
 
 	//mysteppery.stop() //niet nodig denk ikkkkkkkkkkkkkkk
@@ -187,5 +180,6 @@ void loop() {
 		delay(50);
 	
   	}
+    //mogelijks eerst connecten en dan pas publishen om te vermijden dat er iets verloren gaat
     client.publish(topic, "datum");
 }
