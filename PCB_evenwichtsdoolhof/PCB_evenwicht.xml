@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <export version="E">
   <design>
-    <source>C:\Users\emiel\OneDrive - KU Leuven\Documents\GitHub\Puzzel_bal\PCB_evenwicht\PCB_evenwicht.kicad_sch</source>
-    <date>18/04/2023 10:10:28</date>
-    <tool>Eeschema 7.0.1</tool>
+    <source>C:\Users\gheys\OneDrive - KU Leuven\Documents\GitHub\Puzzel_bal\PCB_evenwichtsdoolhof\PCB_evenwicht.kicad_sch</source>
+    <date>2/05/2023 10:47:18</date>
+    <tool>Eeschema (7.0.0)</tool>
     <sheet number="1" name="/" tstamps="/">
       <title_block>
         <title/>
@@ -487,7 +487,7 @@
     </comp>
     <comp ref="C17">
       <value>4.7uF</value>
-      <footprint>Capacitor_SMD:C_1206_3216Metric_Pad1.33x1.80mm_HandSolder</footprint>
+      <footprint>Capacitor_SMD:C_0805_2012Metric_Pad1.18x1.45mm_HandSolder</footprint>
       <libsource lib="Device" part="C" description="Unpolarized capacitor"/>
       <property name="Sheetname" value="A4988_1"/>
       <property name="Sheetfile" value="a4988_1.kicad_sch"/>
@@ -631,7 +631,7 @@
     </comp>
     <comp ref="C15">
       <value>4.7uF</value>
-      <footprint>Capacitor_SMD:C_1206_3216Metric_Pad1.33x1.80mm_HandSolder</footprint>
+      <footprint>Capacitor_SMD:C_0805_2012Metric_Pad1.18x1.45mm_HandSolder</footprint>
       <libsource lib="Device" part="C" description="Unpolarized capacitor"/>
       <property name="Sheetname" value="A4988_2"/>
       <property name="Sheetfile" value="a4988_2.kicad_sch"/>
@@ -1077,7 +1077,7 @@
       <uri>C:\Program Files\KiCad\7.0\share\kicad\symbols\/Jumper.kicad_sym</uri>
     </library>
     <library logical="Lib">
-      <uri>C:\Users\emiel\OneDrive - KU Leuven\Documents\GitHub\Puzzel_bal\PCB_evenwicht/Lib/Lib.kicad_sym</uri>
+      <uri>C:\Users\gheys\OneDrive - KU Leuven\Documents\GitHub\Puzzel_bal\PCB_evenwichtsdoolhof/Lib/Lib.kicad_sym</uri>
     </library>
     <library logical="RF_Module">
       <uri>C:\Program Files\KiCad\7.0\share\kicad\symbols\/RF_Module.kicad_sym</uri>
@@ -1096,8 +1096,10 @@
       <node ref="C18" pin="1" pintype="passive"/>
       <node ref="C3" pin="2" pintype="passive"/>
       <node ref="C4" pin="1" pintype="passive"/>
+      <node ref="IC1" pin="12" pinfunction="~{RESET}" pintype="bidirectional"/>
       <node ref="IC1" pin="14" pinfunction="~{SLEEP}" pintype="bidirectional"/>
       <node ref="IC1" pin="15" pinfunction="VDD" pintype="bidirectional"/>
+      <node ref="IC2" pin="12" pinfunction="~{RESET}" pintype="bidirectional"/>
       <node ref="IC2" pin="14" pinfunction="~{SLEEP}" pintype="bidirectional"/>
       <node ref="IC2" pin="15" pinfunction="VDD" pintype="bidirectional"/>
       <node ref="J2" pin="1" pinfunction="Pin_1" pintype="passive"/>
@@ -1158,12 +1160,10 @@
       <node ref="C7" pin="1" pintype="passive"/>
       <node ref="C9" pin="2" pintype="passive"/>
       <node ref="D2" pin="1" pinfunction="K" pintype="passive"/>
-      <node ref="IC1" pin="12" pinfunction="~{RESET}" pintype="bidirectional"/>
       <node ref="IC1" pin="18" pinfunction="GND_2" pintype="bidirectional"/>
       <node ref="IC1" pin="2" pinfunction="~{ENABLE}" pintype="bidirectional"/>
       <node ref="IC1" pin="29" pinfunction="EP" pintype="bidirectional"/>
       <node ref="IC1" pin="3" pinfunction="GND_1" pintype="bidirectional"/>
-      <node ref="IC2" pin="12" pinfunction="~{RESET}" pintype="bidirectional"/>
       <node ref="IC2" pin="18" pinfunction="GND_2" pintype="bidirectional"/>
       <node ref="IC2" pin="2" pinfunction="~{ENABLE}" pintype="bidirectional"/>
       <node ref="IC2" pin="29" pinfunction="EP" pintype="bidirectional"/>
