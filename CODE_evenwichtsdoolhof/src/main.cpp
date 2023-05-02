@@ -164,8 +164,8 @@ void loop() {
 
     //- MQTT
 
-	//mysteppery.stop()
-	//while(!digitalRead(finish)){
+	//mysteppery.stop() //niet nodig denk ikkkkkkkkkkkkkkk
+	while(!digitalRead(finish)){
     //move x to the measured position of the potentiometer
 		value_potx = analogRead(potx);
 		posx = (value_potx*max_rotx)/4095;
@@ -186,5 +186,6 @@ void loop() {
 		taskYIELD();
 		delay(50);
 	
-  	//}
+  	}
+    client.publish(topic, "datum");
 }
