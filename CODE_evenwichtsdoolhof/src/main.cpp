@@ -95,14 +95,14 @@ AccelStepper myStepperx(AccelStepper::DRIVER, stepPinx, dirPinx);
 
 void setup() {
 	// OTA
-	ota.setHostname("espdoolhof");  
-	ota.setPassword("espdoolhof");
-	ota.begin();
+	//ota.setHostname("espdoolhof");  
+	//ota.setPassword("espdoolhof");
+	//ota.begin();
 
   //MQTT -
   Serial.begin(115200);
-  setup_wifi();
-  client.setServer(MQTT_SERVER, MQTT_PORT);
+  //setup_wifi();
+  //client.setServer(MQTT_SERVER, MQTT_PORT);
 
   vTaskDelay(100);
   
@@ -120,7 +120,7 @@ void setup() {
   myStepperx.setMaxSpeed(1000.0);    // must be equal to or greater than desired speed.
   myStepperx.setSpeed(900.0);       // desired speed to run at
   myStepperx.setAcceleration(550); // desired acceleration
-  
+  Serial.println("begin setup");
   //find home position
   while(!digitalRead(switchy)){
 	if (!mySteppery.run()){
@@ -135,7 +135,7 @@ void setup() {
 	}
 	taskYIELD();
   }
-
+  Serial.println("home position found");
   //set home position
   mySteppery.setCurrentPosition(0);
   myStepperx.setCurrentPosition(0);
@@ -148,27 +148,29 @@ void setup() {
 
 void loop() {
 	//MQTT -
-    if (!client.connected())
-    {
-        reconnect();
-    }
-    client.loop();
+    //if (!client.connected())
+    //{
+    //    reconnect();
+    //}
+    //client.loop();
 
     // client.publish(topic, "datum"); // deze nog plaatsen waar gedetecteerd wordt dat balletje in het juiste gat is gevallen (en "datum" veranderen)
     //- MQTT
 
 	//mysteppery.stop() //niet nodig denk ikkkkkkkkkkkkkkk
-	while(!digitalRead(finish)){
+	//while(!digitalRead(finish)){
     //move x to the measured position of the potentiometer
 		value_potx = analogRead(potx);
 		posx = (value_potx*max_rotx)/4095;
 		myStepperx.moveTo(posx);
 		myStepperx.run();
+    Serial.println(posx);
 		// move y to the measured position of the potentiometer
 		value_poty = analogRead(poty);
 		posy = -(value_poty*max_roty)/4095;
 		mySteppery.moveTo(posy);
 		mySteppery.run();
+    Serial.println(posy);
 
     //visuel feedback of end of loop function
 		//digitalWrite(2, HIGH);
@@ -179,7 +181,7 @@ void loop() {
 		taskYIELD();
 		delay(50);
 	
-  	}
+  	//}
     //mogelijks eerst connecten en dan pas publishen om te vermijden dat er iets verloren gaat
-    client.publish(topic, "datum");
+    //client.publish(topic, "datum");
 }
