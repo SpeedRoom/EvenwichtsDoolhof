@@ -1,2 +1,5 @@
-# EvenwichtsDoolhof
-Meer info over het project is te vinden op https://speedroom.github.io/
+# 3D & Lasercut files
+De volgende onderdelen zijn nodig om de Puzzel compleet te bouwen
+* 1x Plaat
+* 1x motorstuen
+* 
