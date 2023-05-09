@@ -37,7 +37,6 @@
 
 
 
-//change to your wifi credentials
 //MQTT -
 #define SSID          "NETGEAR68"
 #define PWD           "excitedtuba713"
@@ -47,6 +46,23 @@
 
 WiFiClient espClient;
 PubSubClient client(espClient);
+void setup_wifi()
+{
+  delay(10);
+  Serial.println("Connecting to WiFi..");
+  WiFi.begin(SSID, PWD);
+
+  while (WiFi.status() != WL_CONNECTED)
+  {
+    delay(500);
+    Serial.print(".");
+  }
+
+  Serial.println("");
+  Serial.println("WiFi connected");
+  Serial.println("IP address: ");
+  Serial.println(WiFi.localIP());
+}
 
 
 //OTA
@@ -87,24 +103,6 @@ int posx = 0;
 int value_potx = 0;
 const int max_roty = 1920;
 const int max_rotx = 2720;
-
-void setup_wifi()
-{
-  delay(10);
-  Serial.println("Connecting to WiFi..");
-  WiFi.begin(SSID, PWD);
-
-  while (WiFi.status() != WL_CONNECTED)
-  {
-    delay(500);
-    Serial.print(".");
-  }
-
-  Serial.println("");
-  Serial.println("WiFi connected");
-  Serial.println("IP address: ");
-  Serial.println(WiFi.localIP());
-}
 
 
 void reconnect()
