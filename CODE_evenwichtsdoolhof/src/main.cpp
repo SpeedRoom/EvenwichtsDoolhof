@@ -7,10 +7,7 @@
 #include <PubSubClient.h>
 
 
-//structuur van pasword and ssid aangepast
-//define and const int aangepast
-//bal einde tesen
-//zorgen dat de mqtt server aanligt
+
 
 
 
@@ -52,7 +49,7 @@ PubSubClient client(espClient);
 //OTA
 OTAlib ota(SSID, PWD);
 
-Pin connections
+//Pin connections
 #define finish 12
 #define dirPiny 18
 #define stepPiny 19
@@ -66,27 +63,13 @@ Pin connections
 //#define potx 34
 //#define poty 35
 
-// const int finish = 12;
-// const int dirPiny = 18;
-// const int stepPiny = 19;
-// const int dirPinx = 33;
-// const int stepPinx = 32;
-// const int switchy = 14;
-// const int switchx = 27;
-// //const int poty = 26;
-// //const int potx = 25;
-// const int poty = 39;
-// const int potx = 35;
-// //when using pcb version 1.2 use these pins instead of the ones above
-// //const int potx = 34;
-// //const int poty = 35;
-
 int posy = 0;
 int value_poty = 0;
 int posx = 0;
 int value_potx = 0;
-const int max_roty = 1920;
-const int max_rotx = 2720;
+bool finishline = false;
+const int max_roty = 2700;
+const int max_rotx = 2000;
 
 void setup_wifi()
 {
@@ -162,13 +145,11 @@ void setup() {
   myStepperx.setMaxSpeed(16000.0);    // must be equal to or greater than desired speed.
   myStepperx.setSpeed(16000.0);       // desired speed to run at
   myStepperx.setAcceleration(9500); // desired acceleration
-
-  Serial.println("begin setup");
-
   //find home position
   while(!digitalRead(switchy)){
 	if (!mySteppery.run()){
 		mySteppery.move(-5);
+
 	}
 	taskYIELD(); //needed for OTA to work properly (otherwise OTA update will fail) since OTA is running on a different task
   }
@@ -179,11 +160,9 @@ void setup() {
 	}
 	taskYIELD();
   }
-  Serial.println("home position found");
   //set home position
   mySteppery.setCurrentPosition(0);
   myStepperx.setCurrentPosition(0);
-  Serial.println("setup done");
 }
 
 
@@ -197,10 +176,7 @@ void loop() {
     client.loop();
     //- MQTT
 
-	//mysteppery.stop() //niet nodig denk ikkkkkkkkkkkkkkk
-  //nog proberen of mystepper.stop() beter werkt--------------------------------------------!!!!!!!!!!!!!!!!!!!!!---------------------------------
-
-	//while(!digitalRead(finish)){
+  while(!digitalRead(finish)&&!finishline){
     //move x to the measured position of the potentiometer
 		value_potx = analogRead(potx);
 		posx = (value_potx*max_rotx)/4095;
@@ -208,11 +184,14 @@ void loop() {
     myStepperx.run();
 		// move y to the measured position of the potentiometer
 		value_poty = analogRead(poty);
-		posy = -(value_poty*max_roty)/4095;
+		posy = (value_poty*max_roty)/4095;
     mySteppery.moveTo(posy);
     mySteppery.run();
 		taskYIELD();
-  	//}
-    //when the ball has reached the finish line, publish a message to the MQTT broker
-    //client.publish(topic, "datum");
+  	}
+    if (!finishline){
+      //when the ball has reached the finish line, publish a message to the MQTT broker
+      client.publish(topic, "datum");
+      finishline = true;
+    }
 }
