@@ -7,33 +7,6 @@
 #include <PubSubClient.h>
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 //MQTT -
 #define SSID          "NETGEAR68"
 #define PWD           "excitedtuba713"
@@ -124,17 +97,18 @@ void setup() {
 	ota.begin();
 
   Serial.begin(115200);
+
   //MQTT -
   setup_wifi();
   client.setServer(MQTT_SERVER, MQTT_PORT);
   
-
   //pin setup
   pinMode(switchy,INPUT_PULLUP);
   pinMode(switchx,INPUT_PULLUP);
   pinMode(finish,INPUT_PULLUP);
   pinMode(poty,INPUT);
   pinMode(potx,INPUT);
+  
   //motor setup
   //Speeds and accelerations are for when using x16 microstepping
   mySteppery.setMaxSpeed(16000.0);    // must be equal to or greater than desired speed.
@@ -143,6 +117,7 @@ void setup() {
   myStepperx.setMaxSpeed(16000.0);    // must be equal to or greater than desired speed.
   myStepperx.setSpeed(16000.0);       // desired speed to run at
   myStepperx.setAcceleration(9500); // desired acceleration
+  
   //find home position
   while(!digitalRead(switchy)){
 	if (!mySteppery.run()){
@@ -158,21 +133,19 @@ void setup() {
 	}
 	taskYIELD();
   }
+
   //set home position
   mySteppery.setCurrentPosition(0);
   myStepperx.setCurrentPosition(0);
 }
 
-
-
 void loop() {
 	//MQTT -
-    if (!client.connected())
-    {
-        reconnect();
-    }
-    client.loop();
-    //- MQTT
+  if (!client.connected()){
+    reconnect();
+  }
+  client.loop();
+  //- MQTT
 
   while(!digitalRead(finish)&&!finishline){
     //move x to the measured position of the potentiometer
@@ -180,16 +153,18 @@ void loop() {
 		posx = (value_potx*max_rotx)/4095;
     myStepperx.moveTo(posx);
     myStepperx.run();
+
 		// move y to the measured position of the potentiometer
 		value_poty = analogRead(poty);
 		posy = (value_poty*max_roty)/4095;
     mySteppery.moveTo(posy);
     mySteppery.run();
 		taskYIELD();
-  	}
-    if (!finishline){
-      //when the ball has reached the finish line, publish a message to the MQTT broker
-      client.publish(topic, "datum");
-      finishline = true;
-    }
+  }
+
+  if (!finishline){
+    //when the ball has reached the finish line, publish a message to the MQTT broker
+    client.publish(topic, "datum");
+    finishline = true;
+  }
 }
