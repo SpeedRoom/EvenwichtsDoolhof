@@ -7,15 +7,42 @@
 #include <PubSubClient.h>
 
 
-//MQTT -
+//WiFi settings and MQTT settings
+//change to your own settings
 #define SSID          "NETGEAR68"
 #define PWD           "excitedtuba713"
 #define MQTT_SERVER   "192.168.1.61"  
 #define MQTT_PORT     1883
 #define topic  "esp_doolhof/output"
+#define hostname "espdoolhof"
+#define password "espdoolhof"
 
-WiFiClient espClient;
-PubSubClient client(espClient);
+//Pin connections
+#define finish 12
+#define dirPiny 18
+#define stepPiny 19
+#define dirPinx 33
+#define stepPinx 32
+#define switchy 14
+#define switchx 27
+#define poty 39
+#define potx 35
+//when using pcb version 1.2 use these pins instead of the ones above
+//#define potx 34
+//#define poty 35
+//Stepper motor settings
+#define maxspeed 20000
+#define accel 28000
+#define speed 20000
+
+int posy = 0;
+int posx = 0;
+int value_poty = 0;
+int value_potx = 0;
+bool finishline = false;
+const int max_roty = 2850;
+const int max_rotx = 2300;
+
 void setup_wifi()
 {
   delay(10);
@@ -34,73 +61,50 @@ void setup_wifi()
   Serial.println(WiFi.localIP());
 }
 
+// void reconnect()
+// {
+//   // Loop until we're reconnected
+//   while (!client.connected())
+//   {
+//     Serial.print("Attempting MQTT connection...");
+//     // Attempt to connect
+//     // creat unique client ID
+//     // in Mosquitto broker enable anom. access
+//     if (client.connect("ESP32Client"))
+//     {
+//       Serial.println("connected");
+//       // Subscribe
+//       client.subscribe(topic);
+//     }
+//     else
+//     {
+//       Serial.print("failed, rc=");
+//       Serial.print(client.state());
+//       Serial.println(" try again in 1 second");
+//       vTaskDelay(1000/portTICK_RATE_MS);
+//     }
+//     taskYIELD();
+//   }
+// }
 
-//OTA
+WiFiClient espClient;
+PubSubClient client(espClient);
 OTAlib ota(SSID, PWD);
-
-//Pin connections
-#define finish 12
-#define dirPiny 18
-#define stepPiny 19
-#define dirPinx 33
-#define stepPinx 32
-#define switchy 14
-#define switchx 27
-#define poty 39
-#define potx 35
-//when using pcb version 1.2 use these pins instead of the ones above
-//#define potx 34
-//#define poty 35
-
-int posy = 0;
-int value_poty = 0;
-int posx = 0;
-int value_potx = 0;
-bool finishline = false;
-const int max_roty = 2700;
-const int max_rotx = 2000;
-
-
-void reconnect()
-{
-  // Loop until we're reconnected
-  while (!client.connected())
-  {
-    Serial.print("Attempting MQTT connection...");
-    // Attempt to connect
-    // creat unique client ID
-    // in Mosquitto broker enable anom. access
-    if (client.connect("ESP32Client"))
-    {
-      Serial.println("connected");
-      // Subscribe
-      client.subscribe(topic);
-    }
-    else
-    {
-      Serial.print("failed, rc=");
-      Serial.print(client.state());
-      Serial.println(" try again in 1 second");
-      vTaskDelay(1000/portTICK_RATE_MS);
-    }
-    taskYIELD();
-  }
-}
-
 AccelStepper mySteppery(AccelStepper::DRIVER, stepPiny, dirPiny);   // works for a4988 (Bipolar, constant current, step/direction driver)
 AccelStepper myStepperx(AccelStepper::DRIVER, stepPinx, dirPinx);
 
 void setup() {
+  Serial.begin(115200);
 	// OTA
-	ota.setHostname("espdoolhof");  
-	ota.setPassword("espdoolhof");
+	ota.setHostname(hostname);  
+	ota.setPassword(password);
 	ota.begin();
 
-  Serial.begin(115200);
-
   //MQTT -
-  setup_wifi();
-  client.setServer(MQTT_SERVER, MQTT_PORT);
+  //client.setServer(MQTT_SERVER, MQTT_PORT);
+
+  //mag mogelijks weg maar niet zeker
+  //setup_wifi();
   
   //pin setup
   pinMode(switchy,INPUT_PULLUP);
@@ -111,43 +115,42 @@ void setup() {
   
   //motor setup
   //Speeds and accelerations are for when using x16 microstepping
-  mySteppery.setMaxSpeed(16000.0);    // must be equal to or greater than desired speed.
-  mySteppery.setSpeed(16000.0);       // desired speed to run at
-  mySteppery.setAcceleration(9500); // desired acceleration
-  myStepperx.setMaxSpeed(16000.0);    // must be equal to or greater than desired speed.
-  myStepperx.setSpeed(16000.0);       // desired speed to run at
-  myStepperx.setAcceleration(9500); // desired acceleration
+  mySteppery.setMaxSpeed(maxspeed);    // must be equal to or greater than desired speed.
+  mySteppery.setSpeed(speed);       // desired speed to run at
+  mySteppery.setAcceleration(accel); // desired acceleration
+  myStepperx.setMaxSpeed(maxspeed);    // must be equal to or greater than desired speed.
+  myStepperx.setSpeed(speed);       // desired speed to run at
+  myStepperx.setAcceleration(accel); // desired acceleration
   
   //find home position
   while(!digitalRead(switchy)){
 	if (!mySteppery.run()){
-		mySteppery.move(-5);
+		mySteppery.move(-50);
 
 	}
 	taskYIELD(); //needed for OTA to work properly (otherwise OTA update will fail) since OTA is running on a different task
   }
+  mySteppery.setCurrentPosition(0);
   while(!digitalRead(switchx)){
 	if (!myStepperx.run()){
-		myStepperx.move(5);
+		myStepperx.move(50);
 
 	}
 	taskYIELD();
   }
-
-  //set home position
-  mySteppery.setCurrentPosition(0);
   myStepperx.setCurrentPosition(0);
+  
 }
 
 void loop() {
-	//MQTT -
-  if (!client.connected()){
-    reconnect();
-  }
-  client.loop();
+  //MQTT -
+  // if (!client.connected()){
+  //   reconnect();
+  // }
+  // client.loop();
   //- MQTT
 
-  while(!digitalRead(finish)&&!finishline){
+	while(!finishline){
     //move x to the measured position of the potentiometer
 		value_potx = analogRead(potx);
 		posx = (value_potx*max_rotx)/4095;
@@ -160,11 +163,8 @@ void loop() {
     mySteppery.moveTo(posy);
     mySteppery.run();
 		taskYIELD();
+    finishline = digitalRead(finish);
   }
-
-  if (!finishline){
-    //when the ball has reached the finish line, publish a message to the MQTT broker
-    client.publish(topic, "datum");
-    finishline = true;
-  }
+  //when the ball has reached the finish line, publish a message to the MQTT broker
+  // client.publish(topic, "datum");
 }
