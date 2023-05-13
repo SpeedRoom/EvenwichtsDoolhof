@@ -39,7 +39,7 @@ int posy = 0;
 int posx = 0;
 int value_poty = 0;
 int value_potx = 0;
-bool finishline = false;
+bool finished = false;
 const int max_roty = 2850;
 const int max_rotx = 2300;
 
@@ -61,31 +61,31 @@ void setup_wifi()
   Serial.println(WiFi.localIP());
 }
 
-// void reconnect()
-// {
-//   // Loop until we're reconnected
-//   while (!client.connected())
-//   {
-//     Serial.print("Attempting MQTT connection...");
-//     // Attempt to connect
-//     // creat unique client ID
-//     // in Mosquitto broker enable anom. access
-//     if (client.connect("ESP32Client"))
-//     {
-//       Serial.println("connected");
-//       // Subscribe
-//       client.subscribe(topic);
-//     }
-//     else
-//     {
-//       Serial.print("failed, rc=");
-//       Serial.print(client.state());
-//       Serial.println(" try again in 1 second");
-//       vTaskDelay(1000/portTICK_RATE_MS);
-//     }
-//     taskYIELD();
-//   }
-// }
+void reconnect()
+{
+  // Loop until we're reconnected
+  while (!client.connected())
+  {
+    Serial.print("Attempting MQTT connection...");
+    // Attempt to connect
+    // creat unique client ID
+    // in Mosquitto broker enable anom. access
+    if (client.connect("ESP32Client"))
+    {
+      Serial.println("connected");
+      // Subscribe
+      client.subscribe(topic);
+    }
+    else
+    {
+      Serial.print("failed, rc=");
+      Serial.print(client.state());
+      Serial.println(" try again in 1 second");
+      vTaskDelay(1000/portTICK_RATE_MS);
+    }
+    taskYIELD();
+  }
+}
 
 WiFiClient espClient;
 PubSubClient client(espClient);
@@ -101,10 +101,7 @@ void setup() {
 	ota.begin();
 
   //MQTT -
-  //client.setServer(MQTT_SERVER, MQTT_PORT);
-
-  //mag mogelijks weg maar niet zeker
-  //setup_wifi();
+  client.setServer(MQTT_SERVER, MQTT_PORT);
   
   //pin setup
   pinMode(switchy,INPUT_PULLUP);
@@ -128,7 +125,8 @@ void setup() {
 		mySteppery.move(-50);
 
 	}
-	taskYIELD(); //needed for OTA to work properly (otherwise OTA update will fail) since OTA is running on a different task
+  //needed for OTA to work properly (otherwise OTA update will fail) since OTA is running on a different task
+	taskYIELD(); 
   }
   mySteppery.setCurrentPosition(0);
   while(!digitalRead(switchx)){
@@ -144,13 +142,13 @@ void setup() {
 
 void loop() {
   //MQTT -
-  // if (!client.connected()){
-  //   reconnect();
-  // }
-  // client.loop();
+  if (!client.connected()){
+    reconnect();
+  }
+  client.loop();
   //- MQTT
 
-	while(!finishline){
+	while(!finished){
     //move x to the measured position of the potentiometer
 		value_potx = analogRead(potx);
 		posx = (value_potx*max_rotx)/4095;
@@ -163,8 +161,8 @@ void loop() {
     mySteppery.moveTo(posy);
     mySteppery.run();
 		taskYIELD();
-    finishline = digitalRead(finish);
+    finished = digitalRead(finish);
   }
   //when the ball has reached the finish line, publish a message to the MQTT broker
-  // client.publish(topic, "datum");
+  client.publish(topic, "datum");
 }
