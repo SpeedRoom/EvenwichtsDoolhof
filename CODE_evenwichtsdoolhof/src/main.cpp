@@ -1,5 +1,5 @@
 
-//Autor: Emiel Dever
+//Autor: Emiel Dever, Jonathan Gheysens
 
 #include <AccelStepper.h>
 #include <WiFi.h>
@@ -95,6 +95,7 @@ AccelStepper myStepperx(AccelStepper::DRIVER, stepPinx, dirPinx);
 
 void setup() {
   Serial.begin(115200);
+  
 	// OTA
 	ota.setHostname(hostname);  
 	ota.setPassword(password);
